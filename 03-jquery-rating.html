@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>   
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/jquery.js"></script>
+    <script>
+      $(document).ready( function() {
+
+        $(".star").click( function() {
+          const value = $(this).attr('data-value')
+         
+        // Clear all the red stars 
+        $(".star").removeClass('red')
+
+          // Send data-value to server, return success, result and rating //
+          $.ajax({
+            url: "https://api.dev-master.ninja/js/rating",
+            method: "POST",
+            data: { rating: value },
+            success: function(result) {
+              let averageRating = result.result
+
+              /// Paint the average rating (=result) red
+              $('.star').each((index,elem)=>{
+                const itemValue = $(elem).attr('data-value')  // waarom is deze constante nodig? kun je hier beneden 
+                                                              // niet gewoon if(data-value <= result.result) doen?
+                if(itemValue <= averageRating)
+                  $(elem).addClass("red")
+                })
+         
+            }
+
+            })
+        })
+      })       
+          
+
+    </script>
+  </head>
+  <body>
+     
+    <span class="star" data-value="1">*</span>
+    <span class="star" data-value="2">*</span>
+    <span class="star" data-value="3">*</span>
+    <span class="star" data-value="4">*</span>
+    <span class="star" data-value="5">*</span>
+
+  </body>
+</html>
