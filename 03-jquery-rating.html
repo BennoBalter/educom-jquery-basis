@@ -22,8 +22,7 @@
 
               /// Paint the average rating (=result) red
               $('.star').each((index,elem)=>{
-                const itemValue = $(elem).attr('data-value')  // waarom is deze constante nodig? kun je hier beneden 
-                                                              // niet gewoon if(data-value <= result.result) doen?
+                const itemValue = $(elem).attr('data-value')              
                 if(itemValue <= averageRating)
                   $(elem).addClass("red")
                 })
