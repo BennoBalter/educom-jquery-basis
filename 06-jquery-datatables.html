@@ -9,7 +9,7 @@
       <script>
         $(document).ready( function() {
           
-            // Kolommen vullen vanuit de server
+            // Tabel vullen vanuit de server
           const dTable = $("#theBeatles").DataTable({
             ajax: "https://api.dev-master.ninja/js/beatles", 
             columns: [
@@ -28,7 +28,7 @@
             
             // Post form to server
             $("#save").click( function() {
-                const data = {
+                const result = {
                     firstname: $("#firstname").val(),
                     lastname: $("#lastname").val(),
                     email: $("#email").val()
@@ -37,9 +37,9 @@
                 $.ajax({
                   url: "https://api.dev-master.ninja/js/person/save",
                   method: "POST",
-                  data: data,
-                  success: function(data) {
-                    console.log(data)
+                  data: result,
+                  success: function(result) {
+                    console.log(result)
                 }
                 })
             })
