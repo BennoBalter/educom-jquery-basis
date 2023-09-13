@@ -1,46 +1,21 @@
-<html>
-  <head>    
-    <link rel="stylesheet" href="css/vegas-style.css" />   
-    <link rel="stylesheet" href="vegas/vegas.css" />   
-    
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/style.css"/>
     <script src="js/jquery.js"></script>
-    <script src="vegas/vegas.js"></script>
-
     <script>
       $(document).ready( function() {
-        // Get the slide data from the server
-        $.ajax({
-          url: "http://localhost/educom-jquery-basis/mySlides.json",
-          method: "GET",
-          dataType: "json",
-          success: function (result)
-          
-     
-        
-            // Vegas does the formatting of the pictures
-            $("#background-image").vegas({
-              overlay: 'vegas/overlays/02.png',
-              slides: result,
-              walk: function (index, slideSettings) {
-                    $(".text-block h1").html(result[index].title)
-                    $(".text-block h4").html(result[index].subtitle)
-              }
-      })
-    })
-  })
-        
 
-        
+        $("#btn").click(function() {
+        $(".window").fadeToggle()
+        })
+
+      })     
     </script>
   </head>
   <body>
-    <div id="background-image">
-        
-            <div class="text-block">
-                <h1></h1>
-                <h4></h4>
-            </div>
-        
-    </div>     
+     <div id="btn" class="button">Click Me!</div>
+     <div class="window">This is the window!</div>
   </body>
-</html>
+
+  Ajax get, communiceer met localhost
